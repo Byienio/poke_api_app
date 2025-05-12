@@ -80,13 +80,38 @@ docker-compose up --build
 ```
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/poke_db'
 ```
-### 5. In web container exec generate migration
-```
-flask db migrate -m "initial migration"
-```
-### 6. Apply migration to database
+### 5. Apply migration to database
 ```
 flask db upgrade
+```
+### 6. Register account via Postman
+```
+Method POST
+http://127.0.0.1:5000/register
+body - raw json
+example:
+{
+    "username": "user",
+    "password": "user"
+}
+```
+### 7. Login with created account via Postman
+```
+Method POST
+http://127.0.0.1:5000/login
+body - raw json
+example:
+{
+    "username": "user",
+    "password": "user"
+}
+copy your token
+```
+### 8. Fetch data via Postman
+```
+Method GET
+http://127.0.0.1:5000/fetch-pokemon
+Authorization - Bearer token <- copy here your token from login
 ```
 ### 7. Access the App
 
