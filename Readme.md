@@ -80,7 +80,7 @@ docker-compose up --build
 ```
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/poke_db'
 ```
-### 5. Apply migration to database
+### 5. Apply migration to database in web container exec
 ```
 flask db upgrade
 ```
