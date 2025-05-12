@@ -113,7 +113,7 @@ Method GET
 http://127.0.0.1:5000/fetch-pokemon
 Authorization - Bearer token <- copy here your token from login
 ```
-### 7. Access the App
+### 9. Access the App
 
 Visit: [http://localhost:5000](http://localhost:5000)
 
