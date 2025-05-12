@@ -21,7 +21,7 @@ This Flask-based web application fetches and analyzes data from the [PokeAPI](ht
 ## 📦 Features
 
 - 🔐 **JWT User Authentication** (register/login)
-- 📥 **Fetch Pokémon Data** (up to 50 Pokémon)
+- 📥 **Fetch Pokémon Data** 
 - 📈 **Analytical Views**:
   - Average HP, Attack, Defense by Type
   - Top Pokémon by combined stats
@@ -63,17 +63,55 @@ poke_api_app/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/poke_api_app.git
+git clone https://github.com/byienio/poke_api_app.git
 cd poke_api_app
 ```
-
-### 2. Start with Docker
-
+### 2. To run app with Docker uncomment this line in __init__.py
+```
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/poke_db'
+```
+### 3. Comment this one
+```
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/poke_db'
+```
+### 4. Start with Docker
 ```bash
 docker-compose up --build
 ```
-
-### 3. Access the App
+### 5. Apply migration to database in web container exec
+```
+flask db upgrade
+```
+### 6. Register account via Postman
+```
+Method POST
+http://127.0.0.1:5000/register
+body - raw json
+example:
+{
+    "username": "user",
+    "password": "user"
+}
+```
+### 7. Login with created account via Postman
+```
+Method POST
+http://127.0.0.1:5000/login
+body - raw json
+example:
+{
+    "username": "user",
+    "password": "user"
+}
+copy your token
+```
+### 8. Fetch data via Postman
+```
+Method GET
+http://127.0.0.1:5000/fetch-pokemon
+Authorization - Bearer token <- copy here your token from login
+```
+### 9. Access the App
 
 Visit: [http://localhost:5000](http://localhost:5000)
 
