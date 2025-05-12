@@ -21,7 +21,7 @@ This Flask-based web application fetches and analyzes data from the [PokeAPI](ht
 ## 📦 Features
 
 - 🔐 **JWT User Authentication** (register/login)
-- 📥 **Fetch Pokémon Data** (up to 50 Pokémon)
+- 📥 **Fetch Pokémon Data** 
 - 📈 **Analytical Views**:
   - Average HP, Attack, Defense by Type
   - Top Pokémon by combined stats
