@@ -72,8 +72,23 @@ cd poke_api_app
 ```bash
 docker-compose up --build
 ```
-
-### 3. Access the App
+### 3. To run app with Docker uncomment this line in __init__.py
+```
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/poke_db'
+```
+### 4. Comment this one
+```
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/poke_db'
+```
+### 5. In web container exec generate migration
+```
+flask db migrate -m "initial migration"
+```
+### 6. Apply migration to database
+```
+flask db upgrade
+```
+### 7. Access the App
 
 Visit: [http://localhost:5000](http://localhost:5000)
 
