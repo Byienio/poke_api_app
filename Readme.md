@@ -66,19 +66,17 @@ poke_api_app/
 git clone https://github.com/byienio/poke_api_app.git
 cd poke_api_app
 ```
-
-### 2. Start with Docker
-
-```bash
-docker-compose up --build
-```
-### 3. To run app with Docker uncomment this line in __init__.py
+### 2. To run app with Docker uncomment this line in __init__.py
 ```
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/poke_db'
 ```
-### 4. Comment this one
+### 3. Comment this one
 ```
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/poke_db'
+```
+### 4. Start with Docker
+```bash
+docker-compose up --build
 ```
 ### 5. Apply migration to database in web container exec
 ```
