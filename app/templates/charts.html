@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Wykresy Pokemon</title>
+    <title>Pokémon Charts</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Wizualizacja Danych Pokemon</h1>
-    <h2><a href="/">← Powrót na stronę główną</a></h2>
-     <div class="mt-4">
-        <h3>Wybierz analizę:</h3>
+    <h1>Pokémon Data Visualization</h1>
+    <h2><a href="/">← Back to Home</a></h2>
+    <div class="mt-4">
+        <h3>Select analysis:</h3>
         <ul>
-            <li><a href="{{ url_for('main.charts', chart_type='chart_attack_by_type') }}">Średni atak według typu</a></li>
-            <li><a href="{{ url_for('main.charts', chart_type='chart_hp_by_type') }}">Średnie hp według typu</a></li>
-            <li><a href="{{ url_for('main.charts', chart_type='chart_type_distribution') }}">Rozkład typów</a></li>
-            <li><a href="{{ url_for('main.charts', chart_type='chart_average_experience') }}">Średnie doświadczenie według typu</a></li>
-            <li><a href="{{ url_for('main.charts', chart_type='chart_stat_ranges') }}">Największy atak według typu</a></li>
-            <li><a href="{{ url_for('main.charts', chart_type='chart_top_overall_stat') }}">Statystyki 10 najlepszych pokemonów</a></li>
+            <li><a href="{{ url_for('main.charts', chart_type='chart_attack_by_type') }}">Average Attack by Type</a></li>
+            <li><a href="{{ url_for('main.charts', chart_type='chart_hp_by_type') }}">Average HP by Type</a></li>
+            <li><a href="{{ url_for('main.charts', chart_type='chart_type_distribution') }}">Type Distribution</a></li>
+            <li><a href="{{ url_for('main.charts', chart_type='chart_average_experience') }}">Average Experience by Type</a></li>
+            <li><a href="{{ url_for('main.charts', chart_type='chart_stat_ranges') }}">Highest Attack by Type</a></li>
+            <li><a href="{{ url_for('main.charts', chart_type='chart_top_overall_stat') }}">Top 10 Pokémon by Total Stats</a></li>
         </ul>
     </div>
     <div style="width: 80%; margin: auto;">
@@ -52,7 +52,7 @@
             }
         }
     });
-</script>
+    </script>
 
 </body>
 </html>

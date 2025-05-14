@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analiza Pokémonów</title>
+    <title>Pokémon Analysis</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container">
-    <h1 class="mt-5">Analiza Pokémonów</h1>
-    <h2><a href="/">← Powrót na stronę główną</a></h2>
+    <h1 class="mt-5">Pokémon Analysis</h1>
+    <h2><a href="/">← Back to Home</a></h2>
     <div class="mt-4">
-        <h3>Wybierz analizę:</h3>
+        <h3>Select an analysis:</h3>
         <ul>
-            <li><a href="{{ url_for('main.analysis', analysis_type='avg_stats_by_type') }}">Średnie statystyki według typu</a></li>
-            <li><a href="{{ url_for('main.analysis', analysis_type='top_overall_stats') }}">Top Pokémony (ogólne statystyki)</a></li>
-            <li><a href="{{ url_for('main.analysis', analysis_type='avg_experience_by_type') }}">Średnie doświadczenie według typu</a></li>
-            <li><a href="{{ url_for('main.analysis', analysis_type='tallest_heaviest_by_type') }}">Najwyższe i najcięższe Pokémony według typu</a></li>
-            <li><a href="{{ url_for('main.analysis', analysis_type='type_distribution') }}">Dystrybucja typów Pokémonów</a></li>
-            <li><a href="{{ url_for('main.analysis', analysis_type='stat_range_by_type') }}">Zakresy statystyk według typu</a></li>
+            <li><a href="{{ url_for('main.analysis', analysis_type='avg_stats_by_type') }}">Average stats by type</a></li>
+            <li><a href="{{ url_for('main.analysis', analysis_type='top_overall_stats') }}">Top Pokémon (overall stats)</a></li>
+            <li><a href="{{ url_for('main.analysis', analysis_type='avg_experience_by_type') }}">Average experience by type</a></li>
+            <li><a href="{{ url_for('main.analysis', analysis_type='tallest_heaviest_by_type') }}">Tallest and heaviest Pokémon by type</a></li>
+            <li><a href="{{ url_for('main.analysis', analysis_type='type_distribution') }}">Pokémon type distribution</a></li>
+            <li><a href="{{ url_for('main.analysis', analysis_type='stat_range_by_type') }}">Stat ranges by type</a></li>
         </ul>
     </div>
 
     <div class="mt-5">
-        <h3>Wyniki analizy: {{ analysis_type | capitalize }}</h3>
+        <h3>Analysis Results: {{ analysis_title }}</h3>
         <div>
             {% if analysis_type == 'avg_stats_by_type' %}
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Typ</th>
-                            <th>Średni HP</th>
-                            <th>Średni Atak</th>
-                            <th>Średnia Obrona</th>
-                            <th>Top Atak</th>
-                            <th>Najniższe HP</th>
+                            <th>Type</th>
+                            <th>Average HP</th>
+                            <th>Average Attack</th>
+                            <th>Average Defense</th>
+                            <th>Top Attack</th>
+                            <th>Lowest HP</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,8 +61,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Typ</th>
-                            <th>Średnie Doświadczenie</th>
+                            <th>Type</th>
+                            <th>Average Experience</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,9 +78,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Typ</th>
-                            <th>Najwyższy</th>
-                            <th>Najcięższy</th>
+                            <th>Type</th>
+                            <th>Tallest</th>
+                            <th>Heaviest</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,10 +103,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Typ</th>
-                            <th>Zakres Ataku</th>
-                            <th>Zakres Obrony</th>
-                            <th>Zakres HP</th>
+                            <th>Type</th>
+                            <th>Attack Range</th>
+                            <th>Defense Range</th>
+                            <th>HP Range</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -122,14 +122,14 @@
                 </table>
             {% endif %}
         </div>
-         <div>
-        <a href="{{ url_for('main.export_analysis', analysis_type=analysis_type, format='json') }}">
-            <button>Pobierz JSON</button>
-        </a>
-        <a href="{{ url_for('main.export_analysis', analysis_type=analysis_type, format='xml') }}">
-            <button>Pobierz XML</button>
-        </a>
-    </div>
+        <div>
+            <a href="{{ url_for('main.export_analysis', analysis_type=analysis_type, format='json') }}">
+                <button>Download JSON</button>
+            </a>
+            <a href="{{ url_for('main.export_analysis', analysis_type=analysis_type, format='xml') }}">
+                <button>Download XML</button>
+            </a>
+        </div>
     </div>
 
 </div>

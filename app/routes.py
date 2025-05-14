@@ -40,10 +40,15 @@ def fetch_and_store():
 
 @main_bp.route('/analysis/<analysis_type>', methods=['GET'])
 def analysis(analysis_type):
-    data = get_analysis_data(analysis_type)
-    if data is None:
+    result = get_analysis_data(analysis_type)
+    if result is None:
         return jsonify(message="Invalid analysis type"), 400
-    return render_template('analysis.html', analysis_type=analysis_type, data=data)
+    return render_template(
+        'analysis.html',
+        analysis_type=analysis_type,
+        analysis_title=result['title'],
+        data=result['data']
+    )
 
 @main_bp.route('/export/<analysis_type>/<format>', methods=['GET'])
 

@@ -88,15 +88,33 @@ def stat_range_by_type():
 
 def get_analysis_data(analysis_type):
     if analysis_type == 'avg_stats_by_type':
-        return analyze_types()
+        return {
+            'title': 'Average stats by type',
+            'data': analyze_types()
+        }
     elif analysis_type == 'top_overall_stats':
-        return top_overall_stat()
+        return {
+            'title': 'Top Pokémon (overall stats)',
+            'data': top_overall_stat()
+        }
     elif analysis_type == 'avg_experience_by_type':
-        return average_experience_by_type()
+        return {
+            'title': 'Average experience by type',
+            'data': average_experience_by_type()
+        }
     elif analysis_type == 'tallest_heaviest_by_type':
-        return tallest_and_heaviest_by_type()
+        return {
+            'title': 'Tallest and heaviest Pokémon by type',
+            'data': tallest_and_heaviest_by_type()
+        }
     elif analysis_type == 'type_distribution':
-        return type_distribution()
+        return {
+            'title': 'Pokémon type distribution',
+            'data': type_distribution()
+        }
     elif analysis_type == 'stat_range_by_type':
-        return stat_range_by_type()
+        return {
+            'title': 'Stat ranges by type',
+            'data': stat_range_by_type()
+        }
     return None
