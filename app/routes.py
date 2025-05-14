@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import db, User
 from app.services.data_fetcher import fetch_pokemon_data, save_pokemon_data
 from app.services.analysis import *
+from app.services.charts import *
 from dicttoxml import dicttoxml
 
 main_bp = Blueprint('main', __name__)
@@ -59,30 +60,13 @@ def export_analysis(analysis_type, format):
     else:
         return jsonify(message="Invalid format"), 400
 
-def get_analysis_data(analysis_type):
-    if analysis_type == 'avg_stats_by_type':
-        return analyze_types()
-    elif analysis_type == 'top_overall_stats':
-        return top_overall_stat()
-    elif analysis_type == 'avg_experience_by_type':
-        return average_experience_by_type()
-    elif analysis_type == 'tallest_heaviest_by_type':
-        return tallest_and_heaviest_by_type()
-    elif analysis_type == 'type_distribution':
-        return type_distribution()
-    elif analysis_type == 'stat_range_by_type':
-        return stat_range_by_type()
-    return None
 
-@main_bp.route('/charts')
-def charts():
-    data = type_distribution()  # lub inna funkcja analizy
-    chart_data = {
-        "labels": list(data.keys()),
-        "data": list(data.values()),
-        "label": "Rozkład typów"
-    }
-    return render_template('charts.html', chart_data=chart_data)
+@main_bp.route('/charts/<chart_type>')
+def charts(chart_type):
+    data = get_chart(chart_type)
+    if data is None:
+        return jsonify(message="Invalid chart type"), 400
+    return render_template('charts.html', chart_data=data)
 
 @main_bp.route('/export/json')
 def export_json():

@@ -85,3 +85,18 @@ def stat_range_by_type():
             'hp_range': max(hp_vals) - min(hp_vals) if hp_vals else 0,
         }
     return result
+
+def get_analysis_data(analysis_type):
+    if analysis_type == 'avg_stats_by_type':
+        return analyze_types()
+    elif analysis_type == 'top_overall_stats':
+        return top_overall_stat()
+    elif analysis_type == 'avg_experience_by_type':
+        return average_experience_by_type()
+    elif analysis_type == 'tallest_heaviest_by_type':
+        return tallest_and_heaviest_by_type()
+    elif analysis_type == 'type_distribution':
+        return type_distribution()
+    elif analysis_type == 'stat_range_by_type':
+        return stat_range_by_type()
+    return None
