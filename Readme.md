@@ -66,23 +66,15 @@ poke_api_app/
 git clone https://github.com/byienio/poke_api_app.git
 cd poke_api_app
 ```
-### 2. To run app with Docker uncomment this line in __init__.py
-```
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/poke_db'
-```
-### 3. Comment this one
-```
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/poke_db'
-```
-### 4. Start with Docker
+### 2. Start with Docker
 ```bash
 docker-compose up --build
 ```
-### 5. Apply migration to database in web container exec
+### 3. Apply migration to database in web container exec
 ```
 flask db upgrade
 ```
-### 6. Register account via Postman
+### 4. Register account via Postman
 ```
 Method POST
 http://127.0.0.1:5000/register
@@ -93,7 +85,7 @@ example:
     "password": "user"
 }
 ```
-### 7. Login with created account via Postman
+### 5. Login with created account via Postman
 ```
 Method POST
 http://127.0.0.1:5000/login
@@ -105,13 +97,13 @@ example:
 }
 copy your token
 ```
-### 8. Fetch data via Postman
+### 6. Fetch data via Postman
 ```
 Method GET
 http://127.0.0.1:5000/fetch-pokemon
 Authorization - Bearer token <- copy here your token from login
 ```
-### 9. Access the App
+### 7. Access the App
 
 Visit: [http://localhost:5000](http://localhost:5000)
 
