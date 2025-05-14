@@ -100,34 +100,45 @@
                     {% endfor %}
                 </ul>
             {% elif analysis_type == 'stat_range_by_type' %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Attack Range</th>
-                            <th>Defense Range</th>
-                            <th>HP Range</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for type, values in data.items() %}
-                            <tr>
-                                <td>{{ type }}</td>
-                                <td>{{ values.attack_range }}</td>
-                                <td>{{ values.defense_range }}</td>
-                                <td>{{ values.hp_range }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                 <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th rowspan="2">Type</th>
+                <th colspan="2" class="text-center">Attack</th>
+                <th colspan="2" class="text-center">Defense</th>
+                <th colspan="2" class="text-center">HP</th>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Min</th>
+                <th>Max</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for type, values in data.items() %}
+                <tr>
+                    <td>{{ type }}</td>
+                    <td>{{ values.attack_min }}</td>
+                    <td>{{ values.attack_max }}</td>
+                    <td>{{ values.defense_min }}</td>
+                    <td>{{ values.defense_max }}</td>
+                    <td>{{ values.hp_min }}</td>
+                    <td>{{ values.hp_max }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
             {% endif %}
         </div>
-        <div>
+        <div class="d-flex gap-3 my-4">
             <a href="{{ url_for('main.export_analysis', analysis_type=analysis_type, format='json') }}">
-                <button>Download JSON</button>
+                <i class="bi bi-filetype-json me-1"></i> Download JSON
             </a>
             <a href="{{ url_for('main.export_analysis', analysis_type=analysis_type, format='xml') }}">
-                <button>Download XML</button>
+                <i class="bi bi-filetype-xml me-1"></i> Download XML
             </a>
         </div>
     </div>

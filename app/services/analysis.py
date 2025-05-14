@@ -71,18 +71,24 @@ def type_distribution():
 def stat_range_by_type():
     pokemons = Pokemon.query.all()
     type_groups = defaultdict(list)
+
     for p in pokemons:
         for t in p.types.split(','):
             type_groups[t].append(p)
     result = {}
+
     for t, group in type_groups.items():
         attack_vals = [p.attack for p in group if p.attack is not None]
         defense_vals = [p.defense for p in group if p.defense is not None]
         hp_vals = [p.hp for p in group if p.hp is not None]
+
         result[t] = {
-            'attack_range': max(attack_vals) - min(attack_vals) if attack_vals else 0,
-            'defense_range': max(defense_vals) - min(defense_vals) if defense_vals else 0,
-            'hp_range': max(hp_vals) - min(hp_vals) if hp_vals else 0,
+            'attack_min': min(attack_vals) if attack_vals else None,
+            'attack_max': max(attack_vals) if attack_vals else None,
+            'defense_min': min(defense_vals) if defense_vals else None,
+            'defense_max': max(defense_vals) if defense_vals else None,
+            'hp_min': min(hp_vals) if hp_vals else None,
+            'hp_max': max(hp_vals) if hp_vals else None,
         }
     return result
 
