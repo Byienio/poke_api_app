@@ -4,7 +4,7 @@ This Flask-based web application fetches and analyzes data from the [PokeAPI](ht
 
 ---
 
-## 🔧 Technologies and Tools
+##  Technologies and Tools
 
 - **Python 3.10**
 - **Flask** – web framework (MVC)
@@ -18,23 +18,23 @@ This Flask-based web application fetches and analyzes data from the [PokeAPI](ht
 
 ---
 
-## 📦 Features
+##  Features
 
-- 🔐 **JWT User Authentication** (register/login)
-- 📥 **Fetch Pokémon Data** 
-- 📈 **Analytical Views**:
+-  **JWT User Authentication** (register/login)
+-  **Fetch Pokémon Data** 
+-  **Analytical Views**:
   - Average HP, Attack, Defense by Type
   - Top Pokémon by combined stats
   - Average Experience per Type
   - Tallest and Heaviest Pokémon per Type
   - Type Distribution (count)
   - Stat Range Comparisons by Type
-- 📊 **Chart Visualizations** using Chart.js
-- 🐳 **Dockerized** PostgreSQL + Flask stack
+-  **Chart Visualizations** using Chart.js
+-  **Dockerized** PostgreSQL + Flask stack
 
 ---
 
-## 🗂 Project Structure
+##  Project Structure
 
 ```
 poke_api_app/
@@ -58,7 +58,7 @@ poke_api_app/
 
 ---
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### 1. Clone the Repository
 
@@ -109,7 +109,7 @@ Visit: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Authentication
 
@@ -130,7 +130,7 @@ Visit: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🛠 Environment Variables (Docker Compose defaults)
+## Environment Variables (Docker Compose defaults)
 
 ```
 POSTGRES_USER=postgres
@@ -142,13 +142,13 @@ JWT_SECRET_KEY=super-secret
 
 ---
 
-## 📜 License
+##  License
 
 MIT License
 
 ---
 
-## 🙌 Acknowledgements
+##  Acknowledgements
 
 - [PokeAPI](https://pokeapi.co/) for Pokémon data
 - [Chart.js](https://www.chartjs.org/) for charting
